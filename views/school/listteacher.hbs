@@ -1,0 +1,27 @@
+<table class="table table-striped table-hover">
+  <thead class="table-dark">
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th style="width: 250px;">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#if teachers.length}}
+      {{#each teachers}}
+      <tr>
+        <td>{{this.name}}</td>
+        <td>{{this.email}}</td>
+        <td>
+          <a href="/school/editteacher/{{this._id}}" class="btn btn-warning btn-sm">Edit</a>
+           <a href="/school/deleteteacher/{{this._id}}" class="btn btn-danger btn-sm">Delete</a>
+        </td>
+      </tr>
+      {{/each}}
+    {{else}}
+      <tr>
+        <td colspan="6" class="text-center">No teachers found.</td>
+      </tr>
+    {{/if}}
+  </tbody>
+</table>

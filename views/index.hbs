@@ -1,0 +1,57 @@
+<h2>Admin Dashboard</h2>
+<p class="text-muted">Welcome to your admin panel. Use the sidebar to manage data.</p>
+
+<div class="row mt-4">
+
+{{#if (or (eq user.role "ADMIN") (eq user.role "TEACHER"))}}
+<div class="col-md-4">
+<div class="card text-bg-primary mb-3 shadow-sm">
+<div class="card-body">
+<h5 class="card-title">Students</h5>
+<p class="card-text display-6">{{stats.students}}</p>
+<a href="/school/student" class="btn btn-light btn-sm">Manage</a>
+</div>
+</div>
+</div>
+{{/if}}
+
+{{#ifEquals user.role 'ADMIN'}}
+  <div class="col-md-4">
+    <div class="card text-bg-success mb-3 shadow-sm">
+      <div class="card-body">
+        <h5 class="card-title">Teachers</h5>
+        <p class="card-text display-6">{{stats.teachers}}</p>
+        <a href="/school/students" class="btn btn-light btn-sm">Manage</a>
+      </div>
+    </div>
+  </div>
+{{/ifEquals}}
+
+{{#ifEquals user.role 'STUDENT'}}
+<h3>Students Info</h3>
+<div class="row">
+  {{#each students}}
+    <div class="col-md-4">
+      <div class="card mb-3 shadow-sm">
+        <div class="card-body">
+          <h5 class="card-title">{{this.name}}</h5>
+          <p>Email: {{this.email}}</p>
+          <ul>
+            <li>Maths: {{this.subjects.maths}}</li>
+            <li>Science: {{this.subjects.science}}</li>
+            <li>Social: {{this.subjects.social}}</li>
+            <li>Total: {{this.subjects.total}}</li>
+          </ul>
+
+          {{#if (gte this.subjects.total 150)}}
+            <span class="badge bg-success">PASS ✅</span>
+          {{else}}
+            <span class="badge bg-danger">FAIL ❌</span>
+          {{/if}}
+        </div>
+      </div>
+    </div>
+  {{/each}}
+</div>
+{{/ifEquals}}
+</div>

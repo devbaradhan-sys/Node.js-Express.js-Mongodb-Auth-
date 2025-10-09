@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>{{title}}</title>
+  <link rel="stylesheet" href="/bootstrap/bootstrap.min.css">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="bg-light d-flex align-items-center justify-content-center vh-100">
+
+  {{{body}}}
+
+  {{!-- Toast Container --}}
+  {{#if error}}
+    <div class="toast-container position-fixed top-0 end-0 p-3" style="z-index: 1055;">
+      <div id="errorToast" class="toast bg-danger text-white border-0" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="d-flex">
+          <div class="toast-body">
+            {{error}}
+          </div>
+          <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+      </div>
+    </div>
+  {{/if}}
+
+  <!-- Bootstrap JS first -->
+  <script src="/bootstrap/bootstrap.bundle.min.js"></script>
+
+  <!-- Toast Init Script -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const toastEl = document.getElementById("errorToast");
+      if (toastEl) {
+        const toast = new bootstrap.Toast(toastEl, { delay: 5000 });
+        toast.show();
+      }
+    });
+  </script>
+</body>
+</html>

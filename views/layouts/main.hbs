@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>{{title}}</title>
+  <link rel="stylesheet" href="/bootstrap/bootstrap.min.css">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <!-- Top Navbar -->
+  <nav class="navbar navbar-dark bg-dark">
+    <div class="container-fluid d-flex justify-content-between">
+      <a class="navbar-brand" href="/">Admin Panel</a>
+
+      {{#if user}}
+      <div class="d-flex align-items-center">
+        <span class="text-white me-3">Hi, {{user.name}} ({{user.role}})</span>
+        <a href="/logout" class="btn btn-outline-light btn-sm">Logout</a>
+      </div>
+      {{/if}}
+    </div>
+  </nav>
+
+  <div class="wrapper">
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <h5 class="px-3">Navigation</h5>
+      <a href="/">Dashboard</a>
+
+         {{!-- For  Teacher and Admin --}}
+       {{#if (or (eq user.role "ADMIN") (eq user.role "TEACHER"))}}
+        <a href="/school/students">Students</a>
+        {{/if}}
+       {{#ifEquals user.role 'ADMIN'}}       
+        <a href="/school/teachers">Teachers</a>
+       {{/ifEquals}}
+
+      {{!-- For Teacher --}}
+      {{#ifEquals user.role 'TEACHER'}}
+        <a href="/school/students">Students</a>
+      {{/ifEquals}}
+
+      {{!-- For Student --}}
+      {{#ifEquals user.role 'STUDENT'}}
+        <a href="/school/students/profile">My Info</a>
+      {{/ifEquals}}
+    </div>
+
+    <!-- Page Content -->
+    <div class="content">
+      {{{body}}}
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="bg-dark text-white text-center py-3 mt-auto">
+    <p>© {{year}} Admin Panel | Built with Express & Handlebars</p>
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script src="/bootstrap/bootstrap.bundle.min.js"></script>
+  <script src="/js/script.js"></script>
+</body>
+</html>

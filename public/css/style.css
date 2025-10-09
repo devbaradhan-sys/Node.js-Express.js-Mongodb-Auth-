@@ -1,0 +1,29 @@
+ body {
+      display: flex;
+      min-height: 100vh;
+      flex-direction: column;
+    }
+    .wrapper {
+      display: flex;
+      flex: 1;
+    }
+    .sidebar {
+      width: 220px;
+      background: #343a40;
+      color: white;
+      min-height: 100vh;
+      padding-top: 20px;
+    }
+    .sidebar a {
+      color: white;
+      display: block;
+      padding: 10px 20px;
+      text-decoration: none;
+    }
+    .sidebar a:hover {
+      background: #495057;
+    }
+    .content {
+      flex: 1;
+      padding: 20px;
+    }

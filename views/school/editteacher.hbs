@@ -1,0 +1,66 @@
+<div class="container mt-5">
+  <div class="card shadow-lg p-5 border-0">
+    <h2 class="text-center mb-4">Edit Student Data</h2>
+
+    {{#if students}}
+    <form method="POST" action="/school/editteacher" class="row g-4">
+
+      <div class="col-lg-6">
+        <label class="form-label fw-semibold">Name</label>
+        <input 
+          type="text" 
+          name="name" 
+          class="form-control form-control-lg" 
+          value="{{students.name}}" 
+          placeholder="Enter name" 
+          disabled
+        >
+      </div>
+
+      <div class="col-lg-4">
+        <label class="form-label fw-semibold">Maths</label>
+        <input 
+          type="number" 
+          name="maths" 
+          class="form-control form-control-lg" 
+          value="{{students.subjects.maths}}" 
+          placeholder="Enter maths mark" 
+          required
+        >
+      </div>
+
+      <div class="col-lg-4">
+        <label class="form-label fw-semibold">Science</label>
+        <input 
+          type="number" 
+          name="science" 
+          class="form-control form-control-lg" 
+          value="{{students.subjects.science}}" 
+          placeholder="Enter science mark" 
+          required
+        >
+      </div>
+
+      <div class="col-lg-4">
+        <label class="form-label fw-semibold">Social</label>
+        <input 
+          type="number" 
+          name="social" 
+          class="form-control form-control-lg" 
+          value="{{students.subjects.social}}" 
+          placeholder="Enter social mark" 
+          required
+        >
+      </div>
+
+      <input type="hidden" name="id" value="{{students._id}}">
+
+      <div class="col-12 text-center mt-4">
+        <button type="submit" class="btn btn-success btn-lg px-5">Update Student</button>
+      </div>
+    </form>
+    {{else}}
+      <p class="text-center text-danger mt-3">No student data found.</p>
+    {{/if}}
+  </div>
+</div>
