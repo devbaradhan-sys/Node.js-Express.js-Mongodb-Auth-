@@ -1,0 +1,3 @@
+School Management System with Role-Based Access and MongoDB Integration
+
+Developed a full-stack School Management System using Node.js, Express, MongoDB, and Handlebars, featuring role-based dashboards for Admins, Teachers, and Students. Implemented secure authentication using JWT and bcrypt, allowing users to register, log in, and access personalized dashboards. Designed CRUD operations for student and teacher management, including subject and marks management. Utilized MongoDB aggregation pipelines for advanced data retrieval and seamless integration of related collections. The system includes dynamic views, responsive forms, and error handling, providing an efficient and user-friendly platform for school administration.
