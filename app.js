@@ -11,6 +11,7 @@ require("dotenv").config();
 const connectToDatabase = require("./config/mongoDbConfig");
 const hbsHelpers = require('./helpers/helpers');
 
+//cookie parser
 app.use(cookieParser()); 
 
 // Middleware to parse form data
